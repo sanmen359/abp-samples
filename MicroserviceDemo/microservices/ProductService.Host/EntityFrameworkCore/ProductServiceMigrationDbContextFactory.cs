@@ -12,7 +12,8 @@ namespace ProductService.Host.EntityFrameworkCore
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<ProductServiceMigrationDbContext>()
-                .UseSqlServer(configuration.GetConnectionString("ProductManagement"));
+                .UseMySql(configuration.GetConnectionString("ProductManagement"),
+                MySqlServerVersion.LatestSupportedServerVersion);
 
             return new ProductServiceMigrationDbContext(builder.Options);
         }
